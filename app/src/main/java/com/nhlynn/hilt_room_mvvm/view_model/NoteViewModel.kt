@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nhlynn.hilt_room_mvvm.db.NoteEntity
 import com.nhlynn.hilt_room_mvvm.respsitory.UserRepository
-import dagger.Provides
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
