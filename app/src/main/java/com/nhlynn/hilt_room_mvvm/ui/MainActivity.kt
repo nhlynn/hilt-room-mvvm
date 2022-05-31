@@ -2,7 +2,7 @@ package com.nhlynn.hilt_room_mvvm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nhlynn.hilt_room_mvvm.R
@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity(), NoteDelegate {
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var mNoteViewModel: NoteViewModel
+    private val mNoteViewModel by viewModels<NoteViewModel>()
 
     private lateinit var mNoteAdapter: NoteAdapter
 
@@ -29,8 +29,6 @@ class MainActivity : AppCompatActivity(), NoteDelegate {
         setContentView(binding.root)
 
         title = getString(R.string.app_name)
-
-        mNoteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
 
         mNoteAdapter = NoteAdapter(this)
         binding.rvNote.layoutManager =

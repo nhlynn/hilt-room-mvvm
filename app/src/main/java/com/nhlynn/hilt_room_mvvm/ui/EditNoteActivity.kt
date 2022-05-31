@@ -9,7 +9,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.nhlynn.hilt_room_mvvm.R
 import com.nhlynn.hilt_room_mvvm.databinding.ActivityEditNoteBinding
@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 class EditNoteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditNoteBinding
 
-    private lateinit var mNoteViewModel: NoteViewModel
+    private val mNoteViewModel by viewModels<NoteViewModel>()
 
     private var note: NoteEntity? = null
 
@@ -38,8 +38,6 @@ class EditNoteActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         title = getString(R.string.note)
-
-        mNoteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
 
         note = intent.getParcelableExtra(MyConstants.NOTE) ?: return
 

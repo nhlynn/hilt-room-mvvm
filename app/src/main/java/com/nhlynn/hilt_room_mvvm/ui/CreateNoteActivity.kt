@@ -8,7 +8,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.nhlynn.hilt_room_mvvm.R
 import com.nhlynn.hilt_room_mvvm.databinding.ActivityCreateNoteBinding
@@ -21,7 +21,8 @@ import kotlinx.coroutines.launch
 class CreateNoteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateNoteBinding
 
-    private lateinit var mNoteViewModel: NoteViewModel
+    private val mNoteViewModel by viewModels<NoteViewModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,6 @@ class CreateNoteActivity : AppCompatActivity() {
 
         title = getString(R.string.create_note)
 
-        mNoteViewModel = ViewModelProvider(this)[NoteViewModel::class.java]
     }
 
     override fun onSupportNavigateUp(): Boolean {
